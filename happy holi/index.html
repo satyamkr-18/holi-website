@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Holi 🌈</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(-45deg, red, yellow, blue, green, pink);
+    background-size: 400% 400%;
+    animation: gradientBG 8s ease infinite;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    width:350px;
+}
+
+h1{
+    font-size:40px;
+    margin-bottom:20px;
+    animation: colorChange 1s infinite alternate;
+}
+
+@keyframes colorChange{
+    0%{color:red;}
+    25%{color:blue;}
+    50%{color:green;}
+    75%{color:orange;}
+    100%{color:magenta;}
+}
+
+p{
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+button{
+    padding:10px 20px;
+    margin:5px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.play{
+    background:purple;
+    color:white;
+}
+
+.share{
+    background:orange;
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🌈 Happy Holi 🌈</h1>
+    <p>Wishing you happiness, joy and lots of colors in your life!</p>
+    <button class="play" onclick="playMusic()">🎵 Play Music</button>
+    <button class="share" onclick="shareWish()">📤 Share Wish</button>
+</div>
+
+<audio id="holiSong">
+    <source src="holi.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function playMusic(){
+    document.getElementById("holiSong").play();
+}
+
+function shareWish(){
+    if(navigator.share){
+        navigator.share({
+            title: "Happy Holi",
+            text: "🌈 Wishing You a Very Happy Holi!",
+            url: window.location.href
+        });
+    } else {
+        alert("Share this website link with your friends! 🌸");
+    }
+}
+</script>
+
+</body>
+</html>
